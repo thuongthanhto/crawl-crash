@@ -14,9 +14,8 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
   const page = await browser.newPage();
   await page.goto('https://betfury.io/dapps/crash');
 
-  let result = [];
-
   while (1) {
+    let result = [];
     if (result.length === 100) {
       console.log('go here')
       await page.evaluate(() => {
