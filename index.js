@@ -16,11 +16,11 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
 
   while (1) {
     let result = [];
-    if (result.length === 100) {
-      console.log('go here')
+    if (result.length % 100 == 0) {
+      console.log('go here');
       await page.evaluate(() => {
-        location.reload(true)
-     })
+        location.reload(true);
+      });
     }
     await page.waitForSelector('button[type="submit"] > div', {
       timeout: 120000,
@@ -44,7 +44,7 @@ puppeteer.launch({ headless: false }).then(async (browser) => {
     result.push({ value });
     const csv = new ObjectsToCsv(result);
     // Save to file:
-    await csv.toDisk('./output.csv', {append: true});
+    await csv.toDisk('./output.csv', { append: true });
   }
 
   await browser.close();
